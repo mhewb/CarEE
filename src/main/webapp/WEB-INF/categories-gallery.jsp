@@ -76,6 +76,13 @@
 
 </aside>
 
+<c:if test="${!empty err}">
+    <script>
+        alert('${err}')
+    </script>
+</c:if>
+
+
 <jsp:include page="footer.jsp"></jsp:include>
 
 

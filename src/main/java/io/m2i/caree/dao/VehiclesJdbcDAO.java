@@ -27,8 +27,8 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
     public void create(Vehicle vehicle) {
         Connection connection = ConnectionManager.getInstance();
         String sqlQuery =
-                "INSERT INTO Vehicles(name, price, description, imgUrl)"
-              + " VALUES(?,?,?,?)";
+                "INSERT INTO Vehicles(name, price, description, imgUrl, id_category)"
+              + " VALUES(?,?,?,?,?)";
 
         try {
 
@@ -37,6 +37,7 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
             prepStatement.setFloat(2, vehicle.getPrice());
             prepStatement.setString(3, vehicle.getDescription());
             prepStatement.setString(4, vehicle.getImgUrl());
+            prepStatement.setInt(5, vehicle.getCategory().getId());
 
             int affectedRows = prepStatement.executeUpdate();
 
