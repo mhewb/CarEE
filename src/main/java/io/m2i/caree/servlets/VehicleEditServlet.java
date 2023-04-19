@@ -66,6 +66,5 @@ public class VehicleEditServlet extends HttpServlet {
 
         resp.sendRedirect(VehicleDetailsServlet.URL + "/?id=" + id);
 
-
     }
 }

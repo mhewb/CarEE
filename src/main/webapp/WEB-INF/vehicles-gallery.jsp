@@ -39,23 +39,27 @@
 
     <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-4">
 
-        <c:forEach var="v" items="${vehicles}">
+        <c:forEach var="vehicle" items="${vehicles}">
 
         <div class="col my-3">
             <div class="card h-100">
 
-                <img src="${v.imgUrl}" class="card-img-top" alt="...">
+                <img src="${vehicle.imgUrl}" class="card-img-top" alt="...">
 
                 <div class="card-body">
 
-                    <h5 class="card-title"> ${v.name} </h5>
+                    <h5 class="card-title"> ${vehicle.name} </h5>
 
-                    <h6 class="card-subtitle"> ${v.category.getName()}</h6>
+                    <h6 class="card-subtitle"> ${vehicle.category.getName()}</h6>
 
-                    <a class="btn btn-primary" role="button" href="/vehicle-details?id=${v.id}">Details</a>
+                    <a class="btn btn-primary"
+                       role="button"
+                       href="${pageContext.request.contextPath}/vehicle-details?id=${vehicle.id}" >
+                        Details
+                    </a>
 
                     <c:if test="${!empty isLogged}">
-                        <a class="btn btn-danger" role="button" href="/delete-vehicule">Delete</a>
+                        <a class="btn btn-danger" role="button" href="${pageContext.request.contextPath}/delete-vehicle?id=${vehicle.id}">Delete</a>
                     </c:if>
 
                 </div>
