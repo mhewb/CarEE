@@ -48,13 +48,14 @@
 
                     <h6 class="card-subtitle"> ${v.category.getName()}</h6>
 
-                    <a class="btn btn-primary" role="button" href="/vehicles-details?id=${v.id}">Details</a>
+                    <a class="btn btn-primary" role="button" href="/vehicle-details?id=${v.id}">Details</a>
 
                 </div>
             </div>
         </div>
 
         </c:forEach>
+
     </div>
     </div>
 </main>
