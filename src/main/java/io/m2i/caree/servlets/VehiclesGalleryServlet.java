@@ -1,6 +1,5 @@
 package io.m2i.caree.servlets;
 
-import io.m2i.caree.models.Category;
 import io.m2i.caree.models.Vehicle;
 import io.m2i.caree.services.VehiclesService;
 import jakarta.servlet.ServletException;

@@ -96,7 +96,6 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
             return vehicleFound;
         }
 
-    //TODO: Update Vehicle
     @Override
     public void update(Vehicle vehicle) {
 
