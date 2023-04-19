@@ -1,5 +1,7 @@
 package io.m2i.caree.servlets;
 
+import io.m2i.caree.models.Vehicle;
+import io.m2i.caree.services.VehiclesService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,13 +21,10 @@ public class VehiclesGalleryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        HttpSession session = req.getSession();
-
-        if (session.getAttribute("username") == null) {
-
-            req.setAttribute("isLog", false);
-
-        }
+        VehiclesService vehiclesService = new VehiclesService();
+        List<Vehicle> vehicleList = vehiclesService.fetchAllVehicles();
+        req.setAttribute("vehicles", vehicleList);
+        System.out.println(vehicleList);
 
         req.getRequestDispatcher(JSP).forward(req, resp);
     }

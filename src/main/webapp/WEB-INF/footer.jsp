@@ -1,4 +1,5 @@
-<footer class="small">
+<footer>
+    <div class="container-lg">
 
     <div class="row">
 
@@ -22,9 +23,9 @@
         <div class="col text-end">
             <h5>Location</h5>
             <p class="text-muted">
-                CarEE
-                France
-                06260
+                CarEE<br>
+                France<br>
+                06260<br>
             </p>
 
         </div>
@@ -40,6 +41,8 @@
             <li class="ms-3"><a class="link-dark" href="#"><i class="bi-vimeo"></i></a></li>
             <li class="ms-3"><a class="link-dark" href="#"><i class="bi-instagram"></i></a></li>
         </ul>
+    </div>
+
     </div>
 
 </footer>

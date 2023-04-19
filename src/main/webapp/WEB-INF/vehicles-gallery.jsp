@@ -26,13 +26,37 @@
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-<div class="container-lg">
-
 
 <jsp:include page="menu.jsp"></jsp:include>
 
-<main>
+<main class="flex-shrink-0">
 
+    <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-4">
+
+        <c:forEach var="v" items="${vehicles}">
+
+        <div class="col my-3">
+            <div class="card h-100">
+
+                <img src="${v.imgUrl}" class="card-img-top" alt="...">
+
+                <div class="card-body">
+
+                    <h5 class="card-title"> ${v.name} </h5>
+<%-- TODO: add category
+                    <h6 class="card-subtitle mb-2 text-muted fw-lighter">
+                        from: ${p.category}
+                    </h6>--%>
+
+                    <a class="btn btn-primary" role="button" href="/vehicles-details?id=${v.id}">Details</a>
+
+
+                </div>
+            </div>
+        </div>
+
+        </c:forEach>
+    </div>
 </main>
 
 <aside>
@@ -41,6 +65,6 @@
 
 <jsp:include page="footer.jsp"></jsp:include>
 
-</div>
+
 </body>
 </html>
