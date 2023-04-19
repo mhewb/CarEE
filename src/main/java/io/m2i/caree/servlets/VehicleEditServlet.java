@@ -33,7 +33,7 @@ public class VehicleEditServlet extends HttpServlet {
 
         req.setAttribute("isEdit", true);
 
-        req.setAttribute("id", id);
+        req.setAttribute("id", vehicle.getId());
         req.setAttribute("name", vehicle.getName());
         req.setAttribute("price", vehicle.getPrice());
         req.setAttribute("description", vehicle.getDescription());

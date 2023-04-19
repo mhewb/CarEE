@@ -85,15 +85,45 @@ public class CategoryJdbcDAO implements CategoryDAO {
         return categoryFound;
     }
 
-    //TODO: Update Category
     @Override
-    public void update(Category entity) {
+    public void update(Category category) {
 
+        Connection connection = ConnectionManager.getInstance();
+        String sqlQuery = "UPDATE Categories " +
+                "SET " +
+                "name = ? " +
+                "WHERE id=?";
+
+        try {
+            PreparedStatement prepStatement = connection.prepareStatement(sqlQuery);
+
+            prepStatement.setString(1, category.getName());
+            prepStatement.setInt(2, category.getId());
+
+            int row = prepStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Unable to update Category");
+        }
     }
 
-    //TODO: Delete Category
     @Override
-    public void delete(Category entity) {
+    public void delete(Category category) {
+
+        Connection connection = ConnectionManager.getInstance();
+        String sqlQuery = "DELETE FROM Categories WHERE id=?";
+
+        try {
+            PreparedStatement prepStatement = connection.prepareStatement(sqlQuery);
+            prepStatement.setInt(1, category.getId());
+
+            int row = prepStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Unable to delete Category");
+        }
 
     }
 }

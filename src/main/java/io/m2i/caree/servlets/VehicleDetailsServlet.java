@@ -37,5 +37,6 @@ public class VehicleDetailsServlet extends HttpServlet {
         req.setAttribute("vehicle", vehicle);
 
         req.getRequestDispatcher(JSP).forward(req, resp);
+
     }
 }

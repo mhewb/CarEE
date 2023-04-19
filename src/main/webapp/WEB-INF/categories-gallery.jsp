@@ -39,14 +39,29 @@
 
         <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-4">
 
-            <c:forEach var="c" items="${categories}">
+            <c:forEach var="cat" items="${categories}">
 
                 <div class="col my-3">
                     <div class="card h-100">
 
                         <div class="card-body">
 
-                            <h5 class="card-title"> ${c.name} </h5>
+                            <h5 class="card-title"> ${cat.name} </h5>
+
+                            <c:if test="${!empty isLogged}">
+                                <a class="btn btn-primary"
+                                   role="button"
+                                   href="${pageContext.request.contextPath}/edit-category?id=${cat.id}">
+                                    Edit
+                                </a>
+
+                                <a class="btn btn-danger"
+                                   role="button"
+                                   href="${pageContext.request.contextPath}/delete-category?id=${cat.id}">
+                                    Delete
+                                </a>
+
+                            </c:if>
 
                         </div>
                     </div>
