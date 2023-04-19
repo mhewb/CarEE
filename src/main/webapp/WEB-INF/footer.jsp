@@ -1,10 +1,36 @@
 <footer class="small">
 
     <div class="row">
-        
+
+        <div class="col">
+            <h5>Get in Touch</h5>
+            <p class="text-muted">
+                Phone: +33 00 00 00 00<br/>
+                Email: CarEE@example.fr<br/>
+                Fax: +33 00 00 00 00 00<br/>
+            </p>
+        </div>
+
+        <div class="col text-center">
+<%--            TODO: make images works !--%>
+            <img src="/images/logo_car_100.png" alt="CarEE logo">
+            <p class="text-muted">
+                CarEE is an awesome website !
+            </p>
+        </div>
+
+        <div class="col text-end">
+            <h5>Location</h5>
+            <p class="text-muted">
+                CarEE
+                France
+                06260
+            </p>
+
+        </div>
     </div>
 
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top text-muted">
         <p> &#169; 2023 | Made with tears and sweat but also love.</p>
         <ul class="list-unstyled d-flex">
             <li class="ms-3"><a class="link-dark" href="#"><i class="bi-twitter"></i></a></li>
