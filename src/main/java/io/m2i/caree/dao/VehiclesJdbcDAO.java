@@ -1,5 +1,6 @@
 package io.m2i.caree.dao;
 
+import io.m2i.caree.models.Category;
 import io.m2i.caree.models.Vehicle;
 
 import java.sql.*;
@@ -12,11 +13,14 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
         int id = resultSet.getInt("id");
         String name = resultSet.getString("name");
         float price = resultSet.getFloat("price");
-        //TODO : Category as a Category object or an id ?
+        int idCategory = resultSet.getInt("id_category");
         String description = resultSet.getString("description");
         String imgUrl = resultSet.getString("imgUrl");
 
-        return new Vehicle(id, name, price, description, imgUrl);
+        CategoryDAO categoryDAO = new CategoryJdbcDAO();
+        Category category = categoryDAO.getById(idCategory);
+
+        return new Vehicle(id, name, category, price, description, imgUrl);
     }
 
     @Override
@@ -47,7 +51,7 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
 
         List<Vehicle> vehiclesList = new ArrayList<>();
         Connection connection = ConnectionManager.getInstance();
-        String sqlQuery = "SELECT id, name, price, description, imgUrl FROM Vehicles";
+        String sqlQuery = "SELECT id, name, id_category, price, description, imgUrl FROM Vehicles";
 
         try {
 
@@ -68,9 +72,28 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
     }
 
     @Override
-    public Vehicle getById(Integer integer) {
-        return null;
-    }
+    public Vehicle getById(Integer id) {
+
+            Connection connection = ConnectionManager.getInstance();
+            String sqlQuery = "SELECT id, name, id_category, price, description, imgUrl FROM Vehicles WHERE id=?;";
+            Vehicle vehicleFound = null;
+
+            try {
+                PreparedStatement prepStatement = connection.prepareStatement(sqlQuery);
+                prepStatement.setInt(1, id);
+                ResultSet result = prepStatement.executeQuery();
+
+                if (result.next()) {
+                    vehicleFound = mapToVehicle(result);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+
+            return vehicleFound;
+        }
 
     @Override
     public void update(Vehicle entity) {

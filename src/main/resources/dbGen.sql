@@ -12,24 +12,29 @@ CREATE TABLE Users (
        PRIMARY KEY (id)
 );
 
-CREATE TABLE Vehicles (
-      id INT auto_increment,
-      name VARCHAR(100),
-#       idCategory INT,
-      price FLOAT,
-      description text,
-      imgURL VARCHAR(255),
-
-      PRIMARY KEY (id)
-#       FOREIGN KEY (idCategory) REFERENCES Category(id)
+CREATE TABLE Categories (
+        id INT auto_increment,
+        name VARCHAR(100),
+        PRIMARY KEY (id)
 );
 
-# CREATE TABLE Category (
-#         id INT auto_increment,
-#         name VARCHAR(100),
-#         PRIMARY KEY (id)
-# );
+CREATE TABLE Vehicles (
+                          id INT auto_increment,
+                          name VARCHAR(100),
+                          id_category INT,
+                          price FLOAT,
+                          description text,
+                          imgURL VARCHAR(255),
+
+                          PRIMARY KEY (id),
+                          FOREIGN KEY (id_category) REFERENCES caree.categories(id)
+);
 
 INSERT INTO Users(username, email, password, isAdmin) VALUES ('admin', 'admin@admin.io', 'admin', true);
-INSERT INTO Vehicles(name, price, description, imgURL) VALUES
-    ('Polestar 2', 70000.5, 'Voiture électrique perfectionnée disponible en versions standard et longue autonomie. Cette bicorps entièrement électrique redéfinit le design et les performances.', 'https://www.sauvageboris.fr/training/javaee/carEE/resources/cars/car_polestar_2.jpg' )
+INSERT INTO Categories(name) VALUES ('Electrique');
+INSERT INTO Vehicles(name, price, description, imgURL, id_category) VALUES
+    ('Polestar 2',
+     70000.5,
+     'Voiture électrique perfectionnée disponible en versions standard et longue autonomie.
+Cette bicorps entièrement électrique redéfinit le design et les performances.',
+     'https://www.sauvageboris.fr/training/javaee/carEE/resources/cars/car_polestar_2.jpg', 1)

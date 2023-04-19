@@ -2,24 +2,25 @@ package io.m2i.caree.models;
 
 public class Vehicle {
 
-    int id;
-    String name;
-    //TODO: handle Category
-    //Category Category;
-    float price;
-    String description;
-    String imgUrl;
+    private int id;
+    private String name;
+    private Category category;
+    private float price;
+    private String description;
+    private String imgUrl;
 
-    public Vehicle(int id, String name, float price, String description, String imgUrl) {
+    public Vehicle(int id, String name, Category category, float price, String description, String imgUrl) {
         this.id = id;
         this.name = name;
+        this.category = category;
         this.price = price;
         this.description = description;
         this.imgUrl = imgUrl;
     }
 
-    public Vehicle(String name, float price, String description, String imgUrl) {
+    public Vehicle(String name, Category category, float price, String description, String imgUrl) {
         this.name = name;
+        this.category = category;
         this.price = price;
         this.description = description;
         this.imgUrl = imgUrl;
@@ -39,6 +40,14 @@ public class Vehicle {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public float getPrice() {
