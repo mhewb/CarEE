@@ -33,6 +33,10 @@
 
     <div class="container-lg">
 
+        <c:if test="${!empty isLogged}">
+            <a class="btn btn-primary" role="button" href="${pageContext.request.contextPath}/create-category">Create</a>
+        </c:if>
+
         <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-4">
 
             <c:forEach var="c" items="${categories}">
