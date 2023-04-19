@@ -21,6 +21,13 @@ public class CategoriesGalleryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession session = req.getSession();
+        String username = (String) session.getAttribute("username");
+
+        if (session.getAttribute("username") != null) {
+            req.setAttribute("isLogged", true);
+        }
+
         CategoriesService categoriesService = new CategoriesService();
         List<Category> categoryList = categoriesService.fetchAllCategories();
 

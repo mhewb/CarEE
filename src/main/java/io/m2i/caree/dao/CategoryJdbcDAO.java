@@ -85,11 +85,13 @@ public class CategoryJdbcDAO implements CategoryDAO {
         return categoryFound;
     }
 
+    //TODO: Update Category
     @Override
     public void update(Category entity) {
 
     }
 
+    //TODO: Delete Category
     @Override
     public void delete(Category entity) {
 

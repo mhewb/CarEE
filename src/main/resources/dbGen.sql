@@ -8,7 +8,7 @@ CREATE TABLE Users (
        username VARCHAR(50),
        email VARCHAR(255),
        password VARCHAR(50),
-       isAdmin bool,
+#        isAdmin bool,
        PRIMARY KEY (id)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE Vehicles (
                           FOREIGN KEY (id_category) REFERENCES caree.categories(id)
 );
 
-INSERT INTO Users(username, email, password, isAdmin) VALUES ('admin', 'admin@admin.io', 'admin', true);
+INSERT INTO Users(username, email, password) VALUES ('admin', 'admin@admin.io', 'admin');
 INSERT INTO Categories(name) VALUES ('Electrique');
 INSERT INTO Vehicles(name, price, description, imgURL, id_category) VALUES
     ('Polestar 2',

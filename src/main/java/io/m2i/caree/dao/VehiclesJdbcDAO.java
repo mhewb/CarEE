@@ -65,7 +65,7 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Failed to gather VehiclesList from database");
+            throw new RuntimeException("Failed to gather VehiclesList from database.");
         }
 
         return vehiclesList;
@@ -95,11 +95,13 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
             return vehicleFound;
         }
 
+    //TODO: Update Vehicle
     @Override
     public void update(Vehicle entity) {
         throw new RuntimeException("");
     }
 
+    //TODO: Delete Vehicle
     @Override
     public void delete(Vehicle entity) {
         throw new RuntimeException("");

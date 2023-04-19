@@ -31,33 +31,37 @@
 
 <main class="flex-shrink-0">
 
-  <div class="container-md">
+  <div class="container-lg">
 
-    <div class="row row-cols-1">
+    <form class="col-6 mx-auto"
+          method="post"
+          action="${pageContext.request.contextPath}/login">
 
-          <div class="card h-100">
+        <label for="usernameInput">Username</label>
+        <input type="text"
+               id="usernameInput"
+               name="username"
+               placeholder="admin"
+               class="form-control form-control-sm">
 
-            <img src="${vehicle.imgUrl}" class="card-img-top" alt="...">
 
-            <div class="card-body">
+        <label for="passwordInput" class="form-control-sm">Password</label>
+        <input type="password"
+               id="passwordInput"
+               name="password"
+               placeholder="admin"
+               class="form-control form-control-sm">
 
-              <h5 class="card-title text-center"> ${vehicle.name} </h5>
 
-              <p>${vehicle.description}</p>
+        <div class="d-grid gap-2 col-5 mx-auto my-2 ">
+        <button type="submit" class="btn btn-primary">Log in</button>
 
-              <p>${vehicle.price}</p>
+      </div>
 
-              <h6 class="card-subtitle"> ${vehicle.category.getName()}</h6>
+    </form>
 
-              <c:if test="${!empty isLogged}">
-                <a class="btn btn-primary" role="button" href="/edit-vehicule">Edit</a>
-              </c:if>
-
-          </div>
-
-    </div>
   </div>
-  </div>
+
 </main>
 
 <aside>
@@ -65,6 +69,11 @@
 </aside>
 
 <jsp:include page="footer.jsp"></jsp:include>
+
+<c:if test="${!empty loggingError}">
+  <script>alert('${loggingError}')</script>
+</c:if>
+
 
 
 </body>

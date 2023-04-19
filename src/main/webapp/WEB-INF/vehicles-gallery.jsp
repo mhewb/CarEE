@@ -33,6 +33,10 @@
 
     <div class="container-lg">
 
+        <c:if test="${!empty isLogged}">
+            <a class="btn btn-primary" role="button" href="/create-vehicule">Create</a>
+        </c:if>
+
     <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-4">
 
         <c:forEach var="v" items="${vehicles}">
@@ -49,6 +53,10 @@
                     <h6 class="card-subtitle"> ${v.category.getName()}</h6>
 
                     <a class="btn btn-primary" role="button" href="/vehicle-details?id=${v.id}">Details</a>
+
+                    <c:if test="${!empty isLogged}">
+                        <a class="btn btn-danger" role="button" href="/delete-vehicule">Delete</a>
+                    </c:if>
 
                 </div>
             </div>

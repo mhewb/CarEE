@@ -22,6 +22,13 @@ public class VehiclesGalleryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession session = req.getSession();
+        String username = (String) session.getAttribute("username");
+
+        if (session.getAttribute("username") != null) {
+            req.setAttribute("isLogged", true);
+        }
+
         VehiclesService vehiclesService = new VehiclesService();
         List<Vehicle> vehicleList = vehiclesService.fetchAllVehicles();
         req.setAttribute("vehicles", vehicleList);
