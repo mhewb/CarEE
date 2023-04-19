@@ -34,7 +34,7 @@
     <div class="container-lg">
 
         <c:if test="${!empty isLogged}">
-            <a class="btn btn-primary" role="button" href="/create-vehicule">Create</a>
+            <a class="btn btn-primary" role="button" href="${pageContext.request.contextPath}/create-vehicle">Create</a>
         </c:if>
 
     <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-4">

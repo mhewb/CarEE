@@ -31,6 +31,8 @@ public class VehicleEditServlet extends HttpServlet {
 
         CategoriesService categoriesService = new CategoriesService();
 
+        req.setAttribute("isEdit", true);
+
         req.setAttribute("id", id);
         req.setAttribute("name", vehicle.getName());
         req.setAttribute("price", vehicle.getPrice());
@@ -38,6 +40,7 @@ public class VehicleEditServlet extends HttpServlet {
         req.setAttribute("imgUrl", vehicle.getImgUrl());
         req.setAttribute("currentCategory", vehicle.getCategory());
         req.setAttribute("categories", categoriesService.fetchAllCategories());
+
 
         req.getRequestDispatcher(JSP).forward(req, resp);
 

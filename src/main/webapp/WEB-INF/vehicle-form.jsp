@@ -41,7 +41,7 @@
       <input type="text"
              id="name"
              name="name"
-             value="${name}"
+             value="${empty isEdit ? '' : name}"
              class="form-control form-control-sm">
 
 
@@ -49,18 +49,26 @@
       <input type="text"
              id="price"
              name="price"
-             value="${price}"
+             value="${empty isEdit ? '' : price}"
              class="form-control form-control-sm">
 
       <label for="imgUrl" class="form-control-sm">URL Image</label>
       <input type="text"
              id="imgUrl"
              name="imgUrl"
-             value="${imgUrl}"
+             value="${empty isEdit ? '' : imgUrl}"
              class="form-control form-control-sm">
 
       <select class="form-select" name="category">
-        <option value="${currentCategory.id}" selected>${currentCategory.name}</option>
+
+        <c:if test="${!empty isEdit}">
+          <option value="${currentCategory.id}" selected>${currentCategory.name}</option>
+        </c:if>
+
+        <c:if test="${empty isEdit}">
+          <option selected>Please select a Category</option>
+        </c:if>
+
         <c:forEach var="cat" items="${categories}">
           <option value="${cat.id}">${cat.name}</option>
         </c:forEach>
@@ -70,14 +78,21 @@
       <input type="text"
              id="description"
              name="description"
-             value="${description}"
+             value="${empty isEdit ? '' : description}"
              class="form-control form-control-sm">
 
 
       <div class="d-grid gap-2 col-5 mx-auto my-2 ">
+        <c:if test="${!empty isEdit}">
         <button type="submit" class="btn btn-primary">Edit Info</button>
+        </c:if>
+
+        <c:if test="${empty isEdit}">
+          <button type="submit" class="btn btn-primary" formaction="/create-vehicle">Create</button>
+        </c:if>
 
       </div>
+
 
     </form>
 
