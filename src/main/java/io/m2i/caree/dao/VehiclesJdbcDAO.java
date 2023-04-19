@@ -97,13 +97,52 @@ public class VehiclesJdbcDAO implements VehiclesDAO {
 
     //TODO: Update Vehicle
     @Override
-    public void update(Vehicle entity) {
-        throw new RuntimeException("");
+    public void update(Vehicle vehicle) {
+
+        Connection connection = ConnectionManager.getInstance();
+        String sqlQuery = "UPDATE Vehicles " +
+                "SET " +
+                "name = ?, " +
+                "price = ?, " +
+                "description = ?, " +
+                "imgUrl = ?, " +
+                "id_category = ? " +
+                "WHERE id=?";
+
+        try {
+            PreparedStatement prepStatement = connection.prepareStatement(sqlQuery);
+
+            prepStatement.setString(1, vehicle.getName());
+            prepStatement.setFloat(2, vehicle.getPrice());
+            prepStatement.setString(3, vehicle.getDescription());
+            prepStatement.setString(4, vehicle.getImgUrl());
+            prepStatement.setInt(5, vehicle.getCategory().getId());
+            prepStatement.setInt(6, vehicle.getId());
+
+            int row = prepStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Unable to update Vehicle");
+        }
+
     }
 
     //TODO: Delete Vehicle
     @Override
-    public void delete(Vehicle entity) {
-        throw new RuntimeException("");
+    public void delete(Vehicle vehicle) {
+        Connection connection = ConnectionManager.getInstance();
+        String sqlQuery = "DELETE FROM Vehicles WHERE id=?";
+
+        try {
+            PreparedStatement prepStatement = connection.prepareStatement(sqlQuery);
+            prepStatement.setInt(1, vehicle.getId());
+
+            int row = prepStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Unable to delete Vehicle");
+        }
     }
 }

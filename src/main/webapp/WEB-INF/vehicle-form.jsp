@@ -35,27 +35,47 @@
 
     <form class="col-6 mx-auto"
           method="post"
-          action="${pageContext.request.contextPath}/login">
+          action="${pageContext.request.contextPath}/edit-vehicle?id=${id}">
 
-<%--        TODO: remove 'value'--%>
-        <label for="usernameInput">Username</label>
-        <input type="text"
-               id="usernameInput"
-               name="username"
-               value="admin"
-               class="form-control form-control-sm">
-
-
-        <label for="passwordInput" class="form-control-sm">Password</label>
-        <input type="password"
-               id="passwordInput"
-               name="password"
-               value="admin"
-               class="form-control form-control-sm">
+      <label for="name">Name</label>
+      <input type="text"
+             id="name"
+             name="name"
+             value="${name}"
+             class="form-control form-control-sm">
 
 
-        <div class="d-grid gap-2 col-5 mx-auto my-2 ">
-        <button type="submit" class="btn btn-primary">Log in</button>
+      <label for="passwordInput" class="form-control-sm">Price</label>
+      <input type="text"
+             id="price"
+             name="price"
+             value="${price}"
+             class="form-control form-control-sm">
+
+      <label for="imgUrl" class="form-control-sm">URL Image</label>
+      <input type="text"
+             id="imgUrl"
+             name="imgUrl"
+             value="${imgUrl}"
+             class="form-control form-control-sm">
+
+      <select class="form-select" name="category">
+        <option value="${currentCategory.id}" selected>${currentCategory.name}</option>
+        <c:forEach var="cat" items="${categories}">
+          <option value="${cat.id}">${cat.name}</option>
+        </c:forEach>
+      </select>
+
+      <label for="description" class="form-control-sm">Description</label>
+      <input type="text"
+             id="description"
+             name="description"
+             value="${description}"
+             class="form-control form-control-sm">
+
+
+      <div class="d-grid gap-2 col-5 mx-auto my-2 ">
+        <button type="submit" class="btn btn-primary">Edit Info</button>
 
       </div>
 

@@ -11,4 +11,7 @@ public class CategoriesService {
     private final CategoryDAO categoryDAO = new CategoryJdbcDAO();
 
     public List<Category> fetchAllCategories() {return categoryDAO.findAll(); }
+
+    public Category getById(Integer id) { return categoryDAO.getById(id); }
+
 }

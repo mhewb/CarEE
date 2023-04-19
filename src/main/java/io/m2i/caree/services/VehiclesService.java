@@ -12,4 +12,8 @@ public class VehiclesService {
 
     public List<Vehicle> fetchAllVehicles() {return vehicleDAO.findAll();}
 
+    public void deleteById(Integer id) {
+
+    }
+
 }
