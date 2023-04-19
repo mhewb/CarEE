@@ -1,0 +1,41 @@
+:root {
+    --custom-color: #1ed3a6;
+}
+
+body, html, * {
+    margin: 0;
+    padding: 0;
+}
+
+main .container-fluid {
+    padding-top: 60px;
+}
+
+aside {
+    min-height: 100%;
+}
+
+.bg-custom-grey {
+    background-color: #e8e8e8;
+}
+
+.custom-background {
+    background-image: url("https://www.sauvageboris.fr/training/javaee/carEE/resources/img/sunset.jpg");
+    background-attachment: fixed;
+    background-position-y: center;
+    background-size: cover;
+    color: white;
+    padding:0;
+}
+
+#purchase-now {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#purchase-now:hover {
+    background-color: var(--custom-color);
+    transition: background-color 0.2s linear;
+}
